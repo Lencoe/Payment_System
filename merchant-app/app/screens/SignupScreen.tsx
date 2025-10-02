@@ -3,6 +3,7 @@ import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { TextInput, Button, Text } from 'react-native-paper';
 
 export default function SignupScreen({ navigation }: any) {
+  const [company, setCompany] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -10,32 +11,78 @@ export default function SignupScreen({ navigation }: any) {
   const [showPassword, setShowPassword] = useState(false);
 
   const onSignup = () => {
-    if (!name || !email || !password) {
-      alert('Please fill name, email and password');
+    if (!company || !name || !email || !password) {
+      alert('Please fill company, name, email and password');
       return;
     }
     if (password !== confirm) {
       alert('Passwords do not match');
       return;
     }
-    console.log({ name, email });
+    console.log({ company, name, email });
     navigation.navigate('Login'); // Navigate back to login after signup
   };
 
   return (
     <View style={styles.container}>
-      {/* Company Logo */}
       <Image source={require('../logo/Logo.png')} style={styles.logo} />
 
       <View style={styles.card}>
         <Text style={styles.title}>Sign Up</Text>
 
-        <TextInput mode="flat" placeholder="Name" value={name} onChangeText={setName} style={styles.input} left={<TextInput.Icon icon="account" />} />
-        <TextInput mode="flat" placeholder="Email" value={email} onChangeText={setEmail} keyboardType="email-address" autoCapitalize="none" style={styles.input} left={<TextInput.Icon icon="email" />} />
-        <TextInput mode="flat" placeholder="Password" value={password} onChangeText={setPassword} secureTextEntry={!showPassword} style={styles.input} left={<TextInput.Icon icon="lock" />} right={<TextInput.Icon icon={showPassword ? 'eye-off' : 'eye'} onPress={() => setShowPassword((s) => !s)} />} />
-        <TextInput mode="flat" placeholder="Confirm Password" value={confirm} onChangeText={setConfirm} secureTextEntry style={styles.input} left={<TextInput.Icon icon="lock-check" />} />
+        <TextInput
+          mode="flat"
+          placeholder="Company Name"
+          value={company}
+          onChangeText={setCompany}
+          style={styles.input}
+          left={<TextInput.Icon icon="office-building" />}
+        />
+        <TextInput
+          mode="flat"
+          placeholder="Name"
+          value={name}
+          onChangeText={setName}
+          style={styles.input}
+          left={<TextInput.Icon icon="account" />}
+        />
+        <TextInput
+          mode="flat"
+          placeholder="Email"
+          value={email}
+          onChangeText={setEmail}
+          keyboardType="email-address"
+          autoCapitalize="none"
+          style={styles.input}
+          left={<TextInput.Icon icon="email" />}
+        />
+        <TextInput
+          mode="flat"
+          placeholder="Password"
+          value={password}
+          onChangeText={setPassword}
+          secureTextEntry={!showPassword}
+          style={styles.input}
+          left={<TextInput.Icon icon="lock" />}
+          right={<TextInput.Icon icon={showPassword ? 'eye-off' : 'eye'} onPress={() => setShowPassword((s) => !s)} />}
+        />
+        <TextInput
+          mode="flat"
+          placeholder="Confirm Password"
+          value={confirm}
+          onChangeText={setConfirm}
+          secureTextEntry
+          style={styles.input}
+          left={<TextInput.Icon icon="lock-check" />}
+        />
 
-        <Button mode="contained" onPress={onSignup} contentStyle={styles.buttonContent} labelStyle={styles.buttonLabel} style={styles.button}>
+        <Button
+          mode="contained"
+          onPress={onSignup}
+          contentStyle={styles.buttonContent}
+          labelStyle={styles.buttonLabel}
+          style={styles.button}
+        >
           SIGN UP
         </Button>
 
@@ -53,7 +100,7 @@ const styles = StyleSheet.create({
   card: { width: '88%', backgroundColor: '#fff', borderRadius: 14, paddingVertical: 24, paddingHorizontal: 20, shadowColor: '#000', shadowOpacity: 0.08, shadowRadius: 10, shadowOffset: { width: 0, height: 6 }, elevation: 6 },
   title: { fontSize: 26, fontWeight: '600', marginBottom: 18, color: '#1776b6' },
   input: { backgroundColor: '#f2f2f2', height: 52, borderRadius: 8, marginBottom: 12 },
-  button: { borderRadius: 8, marginTop: 8 },
+  button: { marginTop: 10, paddingVertical: 5, backgroundColor: '#0073e6', borderRadius: 8 },
   buttonContent: { paddingVertical: 10 },
   buttonLabel: { fontSize: 16, letterSpacing: 2 },
   loginLinkWrap: { marginTop: 14, alignItems: 'center' },

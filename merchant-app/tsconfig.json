@@ -4,7 +4,8 @@
     "strict": true,
     "baseUrl": ".",                       // Make all imports relative to project root
     "paths": {
-      "@screens/*": ["app/screens/*"],   // Optional: alias for screens
+      "@screens/*": ["app/screens/*"],   // alias for screens
+      "@styles/*": ["app/styles/*"],     // <-- ADD THIS LINE for styles
       "@/*": ["*"]
     }
   },
