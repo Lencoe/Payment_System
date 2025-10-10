@@ -3,11 +3,12 @@
   "compilerOptions": {
     "strict": true,
     "baseUrl": ".",                       // Make all imports relative to project root
-    "paths": {
-      "@screens/*": ["app/screens/*"],   // alias for screens
-      "@styles/*": ["app/styles/*"],     // <-- ADD THIS LINE for styles
-      "@/*": ["*"]
-    }
+"paths": {
+  "@screens/*": ["app/screens/*"],
+  "@styles/*": ["app/styles/*"],
+  "@/*": ["*"]
+}
+
   },
   "include": [
     "**/*.ts",
